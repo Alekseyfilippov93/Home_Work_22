@@ -10,8 +10,16 @@ class Command(BaseCommand):
         # Потом категории
         Category.objects.all().delete()
 
-        # 2. Загружаем данные из файлов (фикстур)
-        call_command('loaddata', 'catalog/fixtures/category_data.json')
-        call_command('loaddata', 'catalog/fixtures/product_data.json')
+        # 2. Загружаем данные из фикстур
+        try:
+            call_command('loaddata', 'catalog/fixtures/category_data.json')
+            self.stdout.write(self.style.SUCCESS('Категории успешно загружены'))
 
-        print("База очищена, данные из фикстур загружены!")
+            # Теперь ПРОДУКТЫ
+            call_command('loaddata', 'catalog/fixtures/product_data.json')
+            self.stdout.write(self.style.SUCCESS('Продукты успешно загружены'))
+
+        except Exception as e:
+            self.stdout.write(self.style.ERROR(f'Ошибка при загрузке: {e}'))
+
+        self.stdout.write(self.style.SUCCESS('Данные успешно обновлены!'))
