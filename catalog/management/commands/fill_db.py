@@ -12,14 +12,14 @@ class Command(BaseCommand):
 
         # 2. Загружаем данные из фикстур
         try:
-            call_command('loaddata', 'catalog/fixtures/category_data.json')
-            self.stdout.write(self.style.SUCCESS('Категории успешно загружены'))
+            call_command("loaddata", "catalog/fixtures/category_data.json")
+            self.stdout.write(self.style.SUCCESS("Категории успешно загружены"))
 
             # Теперь ПРОДУКТЫ
-            call_command('loaddata', 'catalog/fixtures/product_data.json')
-            self.stdout.write(self.style.SUCCESS('Продукты успешно загружены'))
+            call_command("loaddata", "catalog/fixtures/product_data.json")
+            self.stdout.write(self.style.SUCCESS("Продукты успешно загружены"))
 
         except Exception as e:
-            self.stdout.write(self.style.ERROR(f'Ошибка при загрузке: {e}'))
+            self.stdout.write(self.style.ERROR(f"Ошибка при загрузке: {e}"))
 
-        self.stdout.write(self.style.SUCCESS('Данные успешно обновлены!'))
+        self.stdout.write(self.style.SUCCESS("Данные успешно обновлены!"))
