@@ -15,6 +15,6 @@ urlpatterns = [
     # path('contacts/', ...) соответствует адресу 'http://127.0.0.1:8000/contacts/'
     path("contacts/", contacts, name="contacts"),
     # path('product/<int:pk>/' Путь для страницы одного товара, принимающий pk
-    path("product/<int:pk>/", product_detail, name="product_detail"),
+    path("products/<int:pk>/", product_detail, name="product_detail"),
 ]
 # Все URL заканчиваются на '/' (согласно критериям задачи)
