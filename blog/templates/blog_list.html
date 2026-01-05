@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<a href="{% url 'blog:create' %}" class="btn btn-primary mb-3">Написать статью</a>
+<div class="row">
+    {% for object in object_list %}
+    <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <h3>{{ object.title }}</h3>
+                <p>{{ object.content|truncatechars:100 }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <a href="{% url 'blog:view' object.pk %}" class="btn btn-sm btn-outline-secondary">Читать</a>
+                    <small class="text-muted">Просмотров: {{ object.views_count }}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
