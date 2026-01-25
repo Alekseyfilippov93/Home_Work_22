@@ -27,6 +27,7 @@ urlpatterns = [
     # path('', ...) означает, что маршруты catalog будут доступны прямо в корне сайта
     path("", include("catalog.urls")),
     path('blogs/', include('blog.urls', namespace='blog')),
+    path('users/', include('users.urls', namespace='users')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -9,6 +9,7 @@ from django.views.generic import (
 )
 from catalog.models import Product
 from catalog.forms import ProductForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class ProductListView(ListView):
@@ -25,7 +26,7 @@ class ContactsTemplateView(TemplateView):
     template_name = "catalog/contacts.html"
 
 
-class ProductCreateView(CreateView):
+class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
     form_class = ProductForm
     template_name = "catalog/product_form.html"
